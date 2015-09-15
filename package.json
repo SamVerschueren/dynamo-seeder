@@ -1,6 +1,6 @@
 {
   "name": "dynamo-seeder",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Seed your DynamoDB database easily.",
   "main": "index.js",
   "scripts": {
