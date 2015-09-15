@@ -1,6 +1,7 @@
 'use strict';
 
 /**
+ * DynamoDB seeder.
  *
  * @author Sam Verschueren      <sam.verschueren@gmail.com>
  * @since  15 Sep. 2015
@@ -9,7 +10,6 @@
 // module dependencies
 var vm = require('vm'),
     path = require('path'),
-    util = require('util'),
     Promise = require('pinkie-promise'),
     db = require('dynongo'),
     objectAssign = require('object-assign'),
@@ -89,7 +89,7 @@ module.exports = (function() {
 
                         // Execute all the promises
                         return Promise.all(inserts);
-                    })
+                    });
 
                     return promise;
                 }.bind(this), Promise.resolve());
@@ -100,8 +100,10 @@ module.exports = (function() {
             }
         },
         split: function (data, schema) {
-            var keyProps = _.pluck(schema.AttributeDefinitions, 'AttributeName');
+            // Retrieve the key properties
+            var keyProps = _.pluck(schema.KeySchema, 'AttributeName');
 
+            // Return the key and data
             return {
                 key: _.pick(data, keyProps),
                 data: _.omit(data, keyProps)
