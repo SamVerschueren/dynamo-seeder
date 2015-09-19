@@ -51,6 +51,53 @@ seeder.seed(data, {dropTables: true})
     });
 ```
 
+### JSON file
+
+#### Simple data
+
+How does a json file looks like? Take a look at this simple example.
+
+```json
+{
+    "users": {
+        "_schema": "path/to/UserSchema.json",
+        "foo": {
+            "firstName": "Foo",
+            "name": "Bar",
+            "email": "foo@bar.com"
+        }
+    }
+}
+```
+
+Where the schema defines the DynamoDB [createTable](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#createTable-property)
+definition. An example of the `UserSchema.json` file could look like this.
+
+```json
+{
+    "TableName": "User",
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "email",
+            "AttributeType": "S"
+        }
+    ],
+    "KeySchema": [
+        {
+            "AttributeName": "email",
+            "KeyType": "HASH"
+        }
+    ],
+    "ProvisionedThroughput": {
+        "ReadCapacityUnits": 1,
+        "WriteCapacityUnits": 1
+    }
+}
+```
+
+The path to the schema is relative from the path where the seeder calls the `seed()` method. It will throw an error if
+the schema could not be found.
+
 ### API
 
 #### connect(options)
