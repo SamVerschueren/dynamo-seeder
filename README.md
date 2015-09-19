@@ -98,6 +98,71 @@ definition. An example of the `UserSchema.json` file could look like this.
 The path to the schema is relative from the path where the seeder calls the `seed()` method. It will throw an error if
 the schema could not be found.
 
+#### Expressions
+
+Sometimes you will need something as an expression, for instance to set the birthday of the user.
+
+```json
+{
+    "users": {
+        "_schema": "path/to/UserSchema.json",
+        "foo": {
+            "firstName": "Foo",
+            "name": "Bar",
+            "email": "foo@bar.com",
+            "birthday": "=new Date(1988, 08, 16).toISOString()"
+        }
+    }
+}
+```
+
+Every statement that is preceded by an `=`-sign will be parsed.
+
+We can also bring it a step further and reference to the object itself. For instance, if we want to store
+the full name of the user aswell, instead of adding it manually, you can do something like this.
+
+```json
+{
+    "users": {
+        "_schema": "path/to/UserSchema.json",
+        "foo": {
+            "firstName": "Foo",
+            "name": "Bar",
+            "fullName": "=this.firstName + ' ' + this.name",
+            "email": "foo@bar.com",
+            "birthday": "=new Date(1988, 08, 16).toISOString()"
+        }
+    }
+}
+```
+
+The result of the `fullName` expression will be `Foo Bar`. So every evaluation is evaluated in it's own context.
+
+#### Dependencies
+
+What if we don't want to make use of the plain old `Date` object, but instead use something like [moment](http://momentjs.com/).
+This is possible by adding a list of dependencies.
+
+```json
+{
+    "_dependencies": {
+        "moment": "moment"
+    },
+    "users": {
+        "_schema": "path/to/UserSchema.json",
+        "foo": {
+            "firstName": "Foo",
+            "name": "Bar",
+            "email": "foo@bar.com",
+            "birthday": "=moment('1988-08-16').format()"
+        }
+    }
+}
+```
+
+If you are using a dependency in your json file, be sure to install it as dependency in your project. If not,
+it will stop the execution and return a `MODULE_NOT_FOUND` error.
+
 ### API
 
 #### connect(options)
