@@ -21,11 +21,11 @@
   },
   "homepage": "https://github.com/SamVerschueren/dynamo-seeder#readme",
   "files": [
-      "index.js"
+    "index.js"
   ],
   "dependencies": {
     "chalk": "^1.1.1",
-    "dynongo": "^0.1.0",
+    "dynongo": "^0.2.0",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "object-assign": "^4.0.1",
