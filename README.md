@@ -4,25 +4,23 @@
 
 ## Installation
 
-```bash
+```
 $ npm install --save dynamo-seeder
 ```
 
 ## How to use
 
-```javascript
-// module dependencies
-var seeder = require('dynamo-seeder'),
-    data = require('./fixtures/data.json');
+```js
+const seeder = require('dynamo-seeder');
+const data = require('./fixtures/data.json');
 
-// Connect with the database
 seeder.connect({prefix: 'pridiktiv.test'});
 
-// Seed the data
 seeder.seed(data)
-    .then(function() {
+    .then(() => {
         // The database is successfully seeded
-    }).catch(function(err) {
+    })
+    .catch(err => {
         // handle error
     });
 ```
@@ -42,11 +40,11 @@ By setting this option to true, it will drop the tables that are being seeded. I
 only that table will be dropped and recreated.
 
 ```javascript
-// Seed the data
 seeder.seed(data, {dropTables: true})
-    .then(function() {
+    .then(() => {
         // The database is successfully seeded
-    }).catch(function(err) {
+    })
+    .catch(err => {
         // handle error
     });
 ```
@@ -173,7 +171,7 @@ See [dynongo](https://github.com/samverschueren/dynongo#connect).
 
 ##### data
 
-*Required*
+*Required*  
 Type: `object`
 
 The JSON seeding data.
