@@ -185,9 +185,9 @@ Type: `object`
 Extra options for the seeder. The only option for now is `dropTables`. If set to `true`, every table will be dropped
 and recreated before it is reseeded again. This option is set to `false` by default.
 
-## Contributors
+## Related
 
-- Sam Verschueren (Author) [<sam.verschueren@gmail.com>]
+- [mongoose-seeder](https://github.com/samverschueren/mongoose-seeder) - Seed your MongoDB database easily
 
 ## License
 
