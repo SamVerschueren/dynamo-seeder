@@ -88,7 +88,7 @@ module.exports = (function () {
 		},
 		split: function (data, schema) {
 			// Retrieve the key properties
-			var keyProps = _.pluck(schema.KeySchema, 'AttributeName');
+			var keyProps = _.map(schema.KeySchema, 'AttributeName');
 
 			// Return the key and data
 			return {
