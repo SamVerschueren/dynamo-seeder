@@ -2,11 +2,13 @@
 
 > Seed your DynamoDB database easily
 
+
 ## Installation
 
 ```
 $ npm install --save dynamo-seeder
 ```
+
 
 ## How to use
 
@@ -171,7 +173,7 @@ See [dynongo](https://github.com/samverschueren/dynongo#connect).
 
 ##### data
 
-*Required*  
+*Required*<br>
 Type: `object`
 
 The JSON seeding data.
@@ -183,9 +185,11 @@ Type: `object`
 Extra options for the seeder. The only option for now is `dropTables`. If set to `true`, every table will be dropped
 and recreated before it is reseeded again. This option is set to `false` by default.
 
+
 ## Related
 
 - [mongoose-seeder](https://github.com/samverschueren/mongoose-seeder) - Seed your MongoDB database easily
+
 
 ## License
 
