@@ -40,6 +40,7 @@ module.exports = (function () {
 
 					// Delete the schema property
 					delete group._schema;
+					delete group._prefix;
 
 					if (this.options.dropTables === true) {
 						// If dropTables is set to true, drop the table
@@ -48,7 +49,7 @@ module.exports = (function () {
 							_this.log(chalk.green.bold('Drop table: ') + tableName);
 
 							// Create the table
-							return db.dropTable(tableName).await().exec();
+							return db.dropRawTable(Table.name).wait().exec();
 						});
 					}
 
@@ -57,8 +58,10 @@ module.exports = (function () {
 						// Log event
 						_this.log(chalk.green.bold('Create table: ') + tableName);
 
+						schema.TableName = Table.name;
+
 						// Create the table
-						return db.createTable(schema).await().exec();
+						return db.createRawTable(schema).wait().exec();
 					}).then(function () {
 						// Unwind the group
 						var unwinded = _this.unwind(group);
