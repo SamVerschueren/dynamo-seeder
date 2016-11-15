@@ -25,13 +25,13 @@
   ],
   "dependencies": {
     "chalk": "^1.1.1",
-    "dynongo": "^0.7.0",
+    "dynongo": "^0.9.0",
     "lodash": "^4.11.1",
     "moment": "^2.13.0",
     "object-assign": "^4.0.1",
     "pinkie-promise": "^2.0.1"
   },
   "devDependencies": {
-    "xo": "*"
+    "xo": "^0.11.1"
   }
 }

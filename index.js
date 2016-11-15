@@ -36,7 +36,7 @@ module.exports = (function () {
 					var group = data[groupKey];
 					var schema = require(path.join(process.cwd(), group._schema));
 					var tableName = schema.TableName;
-					var Table = db.table(schema.TableName);
+					var Table = group._prefix === false ? db.rawTable(schema.TableName) : db.table(schema.TableName);
 
 					// Delete the schema property
 					delete group._schema;
