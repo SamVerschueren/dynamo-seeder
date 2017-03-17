@@ -10,7 +10,8 @@ var moment = require('moment');
 
 module.exports = (function () {
 	var DEFAULT_OPTIONS = {
-		dropTables: false
+		dropTables: false,
+		cwd: process.cwd()
 	};
 
 	var _this = {
@@ -34,7 +35,7 @@ module.exports = (function () {
 
 				return Object.keys(data).reduce(function (promise, groupKey) {
 					var group = data[groupKey];
-					var schema = require(path.join(process.cwd(), group._schema));
+					var schema = require(path.join(_this.options.cwd, group._schema));
 					var tableName = schema.TableName;
 					var Table = group._prefix === false ? db.rawTable(schema.TableName) : db.table(schema.TableName);
 

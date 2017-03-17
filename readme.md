@@ -16,7 +16,9 @@ $ npm install --save dynamo-seeder
 const seeder = require('dynamo-seeder');
 const data = require('./fixtures/data.json');
 
-seeder.connect({prefix: 'pridiktiv.test'});
+seeder.connect({
+	prefix: 'pridiktiv.test'
+});
 
 seeder.seed(data)
     .then(() => {
@@ -169,21 +171,29 @@ it will stop the execution and return a `MODULE_NOT_FOUND` error.
 
 See [dynongo](https://github.com/samverschueren/dynongo#connect).
 
-#### seed(data [, options])
+#### seed(data, [options])
 
 ##### data
 
-*Required*<br>
 Type: `object`
 
 The JSON seeding data.
 
 ##### options
 
-Type: `object`
+###### dropTables
 
-Extra options for the seeder. The only option for now is `dropTables`. If set to `true`, every table will be dropped
-and recreated before it is reseeded again. This option is set to `false` by default.
+Type: `boolean`<br>
+Default: `false`
+
+Drop every table and recreate before it is reseeded again.
+
+###### cwd
+
+Type: `string`<br>
+Default: `process.cwd()`
+
+Working directory which is used as base path for the `_schema` property.
 
 
 ## Related
