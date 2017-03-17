@@ -1,27 +1,24 @@
 {
   "name": "dynamo-seeder",
   "version": "0.3.1",
-  "description": "Seed your DynamoDB database easily.",
+  "description": "Seed your DynamoDB database easily",
+  "license": "MIT",
+  "repository": "SamVerschueren/dynamo-seeder",
+  "author": {
+    "name": "Sam Verschueren",
+    "email": "sam.verschueren@gmail.com",
+    "url": "https://github.com/SamVerschueren"
+  },
   "main": "index.js",
   "scripts": {
     "test": "xo"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SamVerschueren/dynamo-seeder.git"
-  },
+  "files": [
+    "index.js"
+  ],
   "keywords": [
     "dynamodb",
     "seeder"
-  ],
-  "author": "Sam Verschueren",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/SamVerschueren/dynamo-seeder/issues"
-  },
-  "homepage": "https://github.com/SamVerschueren/dynamo-seeder#readme",
-  "files": [
-    "index.js"
   ],
   "dependencies": {
     "chalk": "^1.1.1",
