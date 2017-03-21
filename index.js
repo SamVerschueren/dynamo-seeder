@@ -109,9 +109,17 @@ module.exports = (function () {
 		 * @return {Object}	 The object with the correct references.
 		 */
 		unwind: function (obj) {
-			return _.mapValues(obj, function (value) {
-				return _this.parseValue(obj, value);
-			});
+			var copy = objectAssign({}, obj);
+
+			var keys = Object.keys(copy);
+
+			for (var i = 0; i < keys.length; i++) {
+				var key = keys[i];
+
+				copy[key] = _this.parseValue(copy, copy[key]);
+			}
+
+			return copy;
 		},
 		/**
 		 * This method parses every value. If the value is an object it will unwind
