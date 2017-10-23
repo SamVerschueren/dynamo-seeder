@@ -1,6 +1,6 @@
 {
   "name": "dynamo-seeder",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Seed your DynamoDB database easily",
   "license": "MIT",
   "repository": "SamVerschueren/dynamo-seeder",
