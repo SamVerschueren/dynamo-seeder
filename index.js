@@ -1,9 +1,7 @@
 'use strict';
 var vm = require('vm');
 var path = require('path');
-var Promise = require('pinkie-promise');
 var db = require('dynongo');
-var objectAssign = require('object-assign');
 var _ = require('lodash');
 var chalk = require('chalk');
 var moment = require('moment');
@@ -109,7 +107,7 @@ module.exports = (function () {
 		 * @return {Object}	 The object with the correct references.
 		 */
 		unwind: function (obj) {
-			var copy = objectAssign({}, obj);
+			var copy = Object.assign({}, obj);
 
 			var keys = Object.keys(copy);
 
@@ -146,7 +144,7 @@ module.exports = (function () {
 					var base = {_this: parent};
 
 					// Create a new combined context
-					var ctx = vm.createContext(objectAssign(base, _this.sandbox));
+					var ctx = vm.createContext(Object.assign(base, _this.sandbox));
 
 					// Run in the new context
 					return vm.runInContext(value.substr(1).replace(/this\./g, '_this.'), ctx);
@@ -194,7 +192,7 @@ module.exports = (function () {
 
 	return {
 		seed: function (data, options) {
-			_this.options = objectAssign(DEFAULT_OPTIONS, options);
+			_this.options = Object.assign(DEFAULT_OPTIONS, options);
 			_this.sandbox = {};
 
 			return _this.seed(data);
